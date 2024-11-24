@@ -6,6 +6,7 @@ const authRouter = express.Router();
 
 //Public Routes
 authRouter.post('/register',authController.register );
+authRouter.get('/home',authController.home );
 authRouter.post('/login',authController.login );
 authRouter.post('/logout',authController.logout );
 

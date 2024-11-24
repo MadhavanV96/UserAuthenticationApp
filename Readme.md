@@ -5,7 +5,20 @@ This project implements user authentication and authorization using Bearer token
 
 
 ## Render Deployment URL 
+Use the sample login :
 
+`{
+    "email":"krish@gmail.com",
+    "password":"123456789"
+}` for admin login.
+
+`{
+    "email":"alice.johnson@example.com",
+    "password":"123456789"
+}` for user login.
+
+
+or
 [Render Deployment]()
 
 ## Postman Documentation URL
@@ -89,6 +102,7 @@ Here we use a GET request to `/api/v1/auth/me`. If it is already logged in, we'l
 
 4. **Logout User**: Send a POST request to `api/v1/auth/logout`. It clears the token which is stored in the browser and logged out from the browser. If it is logged out, then we can't use the protected route `api/v1/auth/me`.
 5. **Access Protected Routes - All Informations of the Users** : Send a get request to `api/v1/auth/users` with `Authorization: httponly <token>` header after logging in. If it is already logged in with `role:admin`, it returns all the informations of the registered users. Else it prevents the users to get all informations. 
+6. **Home URL** : It shows basic form to log in and testing the APIs mentioned in the 3<sup>rd</sup> and 5<sup>th</sup> APIs. Remaining APIs can be checked using POSTMAN. `/api/v1/auth/home`.
 
 
 
