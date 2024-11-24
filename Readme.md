@@ -5,7 +5,10 @@ This project implements user authentication and authorization using Bearer token
 
 
 ## Render Deployment URL 
+[Render Deployment](https://userauthenticationapp-ccp1.onrender.com/api/v1/auth/home)
+
 Use the sample login :
+
 
 `{
     "email":"krish@gmail.com",
@@ -17,9 +20,6 @@ Use the sample login :
     "password":"123456789"
 }` for user login.
 
-
-or
-[Render Deployment](https://userauthenticationapp-ccp1.onrender.com/api/v1/auth/home)
 
 ## Postman Documentation URL
 [Postman Documentation URL:](https://documenter.getpostman.com/view/38692959/2sAYBUDsEf)
@@ -113,6 +113,6 @@ The application can be deployed to Render for public access.
 
 1. Pushed the code to GitHub.
 2. Deployed the application by connecting our GitHub repository to Render.
-3. Use the [Render URL]() to access your deployed API.
+3. Use the [Render URL](https://userauthenticationapp-ccp1.onrender.com/api/v1/auth/home) to access your deployed API.
 
 
