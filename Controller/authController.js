@@ -49,8 +49,11 @@ const authController = {
             const token = jwt.sign({ id: user._id }, process.env.SECRET_KEY);
             // console.log(token);
             //store the token in cookies
-            response.cookie('token', token, { httpOnly: true });
-            return response.status(200).json({ message: 'Login successful! Now try the various endpoints like users and me' });
+            // response.cookie('token', token, { httpOnly: true });
+
+
+            //Send Bearer token along with response
+            return response.status(200).json({ message: 'Login successful! Now try the various endpoints like users and me',token });
         }
         catch (error) {
             response.status(400).json({ error: error.message });
@@ -87,7 +90,7 @@ const authController = {
         try {
             const userID = request.userID;
             const user = await User.findById(userID).select('-password -_id -__v -createdAt');
-            if (user.role != 'admin') return response.status(400).json({ message: "You are not admin to fetch details" });
+            if (!user || user.role != 'admin') return response.status(400).json({ message: "You are not admin to fetch details" });
             const allUsers = await User.find().select('-password -__v -createdAt -_id');
             const usersList = allUsers.map(user => ({
                 Name: user.name,

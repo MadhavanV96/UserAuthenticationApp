@@ -95,14 +95,14 @@ Both of these values were put under .gitignore concerning security.
 
 1. ` POST /api/v1/auth/register` **Register a User**: Send a POST request to `/api/v1/auth/register` with JSON payload containing username, email, and password.
 2. `POST /api/v1/auth/login` **Login User**: Send a POST request to `/api/v1/auth/login` with username and password. You’ll receive a JWT if credentials are valid.
-3.  `GET /api/v1/auth/me` **Access Protected Routes - Personal Information**: Send requests to protected routes with `Authorization: httponly <token>` header after logging in.
+3.  `GET /api/v1/auth/me` **Access Protected Routes - Personal Information**: Send requests to protected routes with `Authorization: Bearer <token>` header `authorization header` after logging in.
 Here we use a GET request to `/api/v1/auth/me`. If it is already logged in, we'll receive the details of the users.
 > [!NOTE]
 > In our program, incase of successful login, we return the details of the user.
 
 4.`POST api/v1/auth/logout` **Logout User**: Send a POST request to `api/v1/auth/logout`. It clears the token which is stored in the browser and logged out from the browser. If it is logged out, then we can't use the protected route `api/v1/auth/me`.
 
-5. `GET api/v1/auth/users` **Access Protected Routes - All Informations of the Users** : Send a get request to `api/v1/auth/users` with `Authorization: httponly <token>` header after logging in. If it is already logged in with `role:admin`, it returns all the informations of the registered users. Else it prevents the users to get all informations. 
+5. `GET api/v1/auth/users` **Access Protected Routes - All Informations of the Users** : Send a get request to `api/v1/auth/users` with `Authorization: Bearer <token>` header after logging in. If it is already logged in with `role:admin`, it returns all the informations of the registered users. Else it prevents the users to get all informations. 
 
 6.  `GET /api/v1/auth/home` **Home URL** : It shows basic form to log in and testing the APIs mentioned in the 3<sup>rd</sup> and 5<sup>th</sup> APIs. Remaining APIs can be checked using POSTMAN. `/api/v1/auth/home`.
 
