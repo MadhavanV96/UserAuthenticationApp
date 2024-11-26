@@ -84,6 +84,7 @@ Both of these values were put under .gitignore concerning security.
 ## Folder Structure
 
 .
+
 ├── controllers      # Contains controller functions
 
 ├── models           # Contains Mongoose models
