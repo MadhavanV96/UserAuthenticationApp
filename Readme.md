@@ -85,10 +85,15 @@ Both of these values were put under .gitignore concerning security.
 
 .
 ├── controllers      # Contains controller functions
+
 ├── models           # Contains Mongoose models
+
 ├── routes           # Defines routes for the application
+
 ├── utils            # Middleware for JWT token verification
+
 ├── index.js         # Basefile (e.g., database connection)
+
 └── README.md        # Project documentation
 
 ## API Endpoints
