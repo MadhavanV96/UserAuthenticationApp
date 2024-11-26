@@ -228,8 +228,65 @@ const authController = {
             console.error(error);
             response.status(500).send("An error occurred while loading the login form.");
         }
+    },
+    deleteUser: async (request, response) => {
+        try {
+            const userID = request.userID;
+    
+            // Check if the request is from an admin
+            const requestingUser = await User.findById(userID);
+            if (!requestingUser || requestingUser.role !== 'admin') {
+                return response.status(403).json({ message: "Access denied. Only admins can delete users." });
+            }
+    
+            // Get the user ID to delete from the request params
+            const { id } = request.params;
+    
+            const userToDelete = await User.findById(id);
+            if (!userToDelete) {
+                return response.status(404).json({ message: "User not found." });
+            }
+    
+            await User.findByIdAndDelete(id);
+    
+            return response.status(200).json({ message: "User deleted successfully." });
+        } catch (error) {
+            return response.status(500).json({ message: error.message });
+        }
+    },    
+    updateUser: async (request, response) => {
+        try {
+            const userID = request.userID;
+    
+            // Check if the request is from an admin
+            const requestingUser = await User.findById(userID);
+            if (!requestingUser || requestingUser.role !== 'admin') {
+                return response.status(403).json({ message: "Access denied. Only admins can update user details." });
+            }
+    
+            // Get the user ID to update from the request params and new data from the body
+            const { id } = request.params;
+            const { name, email, dateOfBirth, role } = request.body;
+    
+            const userToUpdate = await User.findById(id);
+            if (!userToUpdate) {
+                return response.status(404).json({ message: "User not found." });
+            }
+    
+            // Replace all fields except sensitive ones like password
+            userToUpdate.name = name;
+            userToUpdate.email = email;
+            userToUpdate.dateOfBirth = dateOfBirth;
+            userToUpdate.role = role;
+    
+            await userToUpdate.save();
+    
+            return response.status(200).json({ message: "User updated successfully.", user: userToUpdate });
+        } catch (error) {
+            return response.status(500).json({ message: error.message });
+        }
     }
-
+    
 
 
 }

@@ -14,6 +14,10 @@ authRouter.post('/logout',authController.logout );
 //Protected Routes
 authRouter.get('/me',auth.isAuthenticate,authController.me);
 authRouter.get('/users',auth.isAuthenticate,authController.users);
+// Update and Delete Routes (Protected, Admin Only)
+authRouter.put('/users/:id', auth.isAuthenticate, authController.updateUser); // Update user by ID
+authRouter.delete('/users/:id', auth.isAuthenticate, authController.deleteUser); // Delete user by ID
+
 
 
 
